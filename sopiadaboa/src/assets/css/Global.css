@@ -1,0 +1,86 @@
+/*----Background----*/
+@media only screen and (min-width:541px){    
+    .bkDrapery{
+        width: 100vw;
+        height: 100vh;
+        margin:-8px;
+        background: linear-gradient(
+            rgba(200,5,27,0.9),
+            rgba(200,5,27,0.9)
+        ),
+        url('../img/image7.png');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        -webkit-transition: all .01s cubic-bezier(.190, 1.000, .220, 1.000);
+        -moz-transition: all .01s cubic-bezier(.190, 1.000, .220, 1.000);
+        -o-transition: all .01s cubic-bezier(.190, 1.000, .220, 1.000);
+        transition: all .01s cubic-bezier(.190, 1.000, .220, 1.000);
+    }
+    .Home{
+        padding-top:5%;
+        padding-bottom:10%;
+        padding-left:35% 
+    }
+    .rtHome{
+        position: absolute;
+        width:450px;
+        height:600px;
+        background-color:#F5F0E6;
+        box-shadow:0px 20px 50px rgba(0,0,0,0.15);
+        border-radius:30px;
+    }
+    .btNext{
+        position: absolute;
+        width: 280px;
+        height: 50px;
+        background-color: rgba(200,5,27,0.9);
+        color:#F5F0E6;
+        border-radius: 10px;
+        left: 85px;
+        top: 509px;
+    }
+}
+@media only screen and (max-width:540px){
+    .bkDrapery{
+        min-height: 110vh;
+        margin: -10px;
+        background: linear-gradient(
+            rgba(200,5,27,0.9),
+            rgba(200,5,27,0.9)
+        ),
+        url('../img/image8.png');
+        background-size: 135%;
+        background-repeat: no-repeat;
+        background-position: center;
+        -webkit-transition: all .01s cubic-bezier(.190, 1.000, .220, 1.000);
+        -moz-transition: all .01s cubic-bezier(.190, 1.000, .220, 1.000);
+        -o-transition: all .01s cubic-bezier(.190, 1.000, .220, 1.000);
+        transition: all .01s cubic-bezier(.190, 1.000, .220, 1.000);
+    }
+    .Home{
+        padding-top:15%;
+        padding-bottom:15px;
+        padding-left:5%;
+        align-items: center;
+    }
+    .rtHome{
+        position: absolute;
+        margin-bottom: 10px;
+        width:90%;
+        height:600px;
+        background-color:#F5F0E6;
+        box-shadow:0px 20px 50px rgba(0,0,0,0.15);
+        border-radius:30px;
+    }
+    .btNext{
+        position: absolute;
+        margin-left: -140px;
+        width: 280px;
+        height: 50px;
+        background-color: rgba(200,5,27,0.9);
+        color:#F5F0E6;
+        border-radius: 10px;
+        top: 509px;
+    }
+}
