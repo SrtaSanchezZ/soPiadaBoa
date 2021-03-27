@@ -3,7 +3,7 @@ import Routes from './Routes';
 
 const App = () => {
   return (
-    <div className="bkDrapery">
+    <div >
         <Routes/>
     </div>
   );
