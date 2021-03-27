@@ -1,0 +1,2 @@
+# soPiadaBoa
+O escopo da plataforma consiste em: - Um usuário pode criar uma piada - Uma piada contém algumas informações do usuário que a registrou, como nome e e-mail e, também a descrição da piada - Um usuário tem acesso a uma lista de piadas, onde TODAS as piadas são listadas - A listagem contém dois filtros: um filtro de ordenação (por data) e um campo de autocomplete - Ao clicar em uma piada na listagem, os detalhes da piada serão mostrados em um modal que conterá alguns dados sobre a piada e ações para "like" e "deslike" da piada
