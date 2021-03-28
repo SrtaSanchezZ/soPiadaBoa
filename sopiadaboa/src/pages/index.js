@@ -7,47 +7,47 @@ import ha1 from '../assets/img/HA-2.png';
 import ha3 from '../assets/img/HA-3.png';
 //#endregion
 const Home = () => {
-    //#region Funções
+    //#region Função
     const handleClick = () =>{
         window.location = '/piadas';
     };
     //#endregion
-    return(
-        <div align="center" className="bkDrapery">            
-            <div className="rtHome">
-                <div style={{ marginTop:'70px' }}>
-                    <div className="ha">
-                        <img src={ha} alt="HA" />
-                    </div>
-                    <div className="ha1">
-                        <img src={ha1} alt="HA" />
-                    </div>
-                    <div className="logo">
-                        <img src={logo} alt="Logo" />
-                    </div>
-                    <div className="ha2">
-                        <img src={ha2} alt="HA" />
-                    </div>
-                    <div className="ha3">
-                        <img src={ha3} alt="HA" />
-                    </div>
+    return(           
+        <div align="center" className="rtHome">
+            <div style={{ marginTop:'70px' }}>
+                <div className="ha">
+                    <img src={ha} alt="HA" />
                 </div>
-                <div style={{ marginTop:'54.88px' }}>
-                    <h1>SÓ <span style={{color:'#cd1d2f'}}>PIADA</span> BOA</h1>
-                    <div className="txHome">
-                        <p>
-                            Participe da maior comunidade de piadistas do Brasil. Vote nas piadas de outros usuários e cadastre suas as suas próprias.
-                        </p> 
-                        <br/>
-                        <span style={{ color:'#0a325e', fontWeight:'800' }}>Só não vá morrer de rir! kkk</span>
-                    </div>
+                <div className="ha1">
+                    <img src={ha1} alt="HA" />
                 </div>
-                <div style={{ marginTop:'190px'}}>
-                    <div className="mic">
-                    </div>
+                <div className="logo">
+                    <img src={logo} alt="Logo" />
                 </div>
-                <button className="btNext" onClick={()=>handleClick()}>Começar</button>
+                <div className="ha2">
+                    <img src={ha2} alt="HA" />
+                </div>
+                <div className="ha3">
+                    <img src={ha3} alt="HA" />
+                </div>
             </div>
+            <div style={{ marginTop:'54.88px' }}>
+                <h1>SÓ <span style={{ color:'#cd1d2f' }}>PIADA</span> BOA</h1>
+                <div className="txHome">
+                    <p>
+                        Participe da maior comunidade de piadistas do Brasil. 
+                        Vote nas piadas de outros usuários e cadastre suas as suas próprias.
+                    </p><br/>
+                    <span style={{ color:'#0A325E', fontWeight:'800' }}>
+                        Só não vá morrer de rir! kkk
+                    </span>
+                </div>
+            </div>
+            <div style={{ marginTop:'190px'}}>
+                <div className="mic">
+                </div>
+            </div>
+            <button className="btNext" onClick={()=>handleClick()}>Começar</button>
         </div>
     );
 }

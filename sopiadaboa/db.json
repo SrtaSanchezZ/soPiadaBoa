@@ -7,8 +7,8 @@
         "name": "Marcelo Azevedo",
         "email": "marcelo@triider.com"
       },
-      "likes": 0,
-      "dislike": 0,
+      "likes": 50,
+      "dislike": 1,
       "created": "2020-12-08T11:21:00Z"
     },
     {
@@ -18,9 +18,9 @@
         "name": "Fábio Borges",
         "email": "fabio@triider.com"
       },
-      "likes": 0,
-      "dislike": 0,
-      "created": "2020-12-08T11:21:00Z"
+      "likes": 35,
+      "dislike": 5,
+      "created": "2021-01-08T11:21:00Z"
     },
     {
       "id": 3,
@@ -29,9 +29,9 @@
         "name": "Gregory Lagranha",
         "email": "gregory@triider.com"
       },
-      "likes": 0,
+      "likes": 29,
       "dislike": 0,
-      "created": "2020-12-08T11:21:00Z"
+      "created": "2021-02-18T11:21:00Z"
     },
     {
       "id": 4,
@@ -40,9 +40,9 @@
         "name": "Thales Sarubbi",
         "email": "thales@triider.com"
       },
-      "likes": 0,
-      "dislike": 0,
-      "created": "2020-12-08T11:21:00Z"
+      "likes": 100,
+      "dislike": 10,
+      "created": "2021-03-27T11:21:00Z"
     }
   ]
 }
