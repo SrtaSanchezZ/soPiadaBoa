@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { List, ListItem, Box, Button, Dialog, DialogActions, DialogContentText } from '@material-ui/core';
+import { List, ListItem, Box, Dialog, DialogContentText } from '@material-ui/core';
 
 const ListJokes = () => {
     const [jokes, setJokes] = useState([]);
@@ -12,6 +12,7 @@ const ListJokes = () => {
     const [like, setLike] = useState(0);
     const [dlike, setDlike] = useState(0);
     const [date,  setDate] = useState("");
+    const [email,  setEmail] = useState("");
 
     const ArrJokes = (arr) =>
         arr.map((item) => ({ id: item.id, description: item.description, 
@@ -19,7 +20,7 @@ const ListJokes = () => {
                              likes: item.likes, dislike: item.dislike, 
                              created: item.created }));
     
-    const handleOpen = (id, tit, desc, nam, lik, dis, dt) => {
+    const handleOpen = (id, tit, desc, nam, lik, dis, dt, email) => {
         setOpen(true);
         setId(id);
         setTitle(tit);
@@ -28,10 +29,12 @@ const ListJokes = () => {
         setLike(lik);
         setDlike(dis);
         setDate(dt);
+        setEmail(email);
     };
     const handleClose = () => {
         setOpen(false);
     };
+
     const handleLoad = () =>{
       axios
       .get('http://localhost:3000/jokes')
@@ -42,6 +45,32 @@ const ListJokes = () => {
         console.log(error);
       });      
     };
+    const handleAlterLike = () =>{
+        axios
+        .patch('http://localhost:3000/jokes/'+id,{
+            likes: like + 1
+        })
+        .then((res) => {          
+            handleLoad();
+            setLike(like + 1);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };    
+    const handleAlterDisLike = () =>{
+        axios
+        .patch('http://localhost:3000/jokes/'+id,{
+            dislike: dlike + 1
+        })
+        .then((res) => {          
+            handleLoad();
+            setDlike(dlike + 1);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
     useEffect(() => {
         handleLoad();
         // eslint-disable-next-line
@@ -49,11 +78,11 @@ const ListJokes = () => {
 
     return(           
         <div align="center" className="rtLJokes">
-            <Box display="flex" p={1} m={1} >
-                <Box p={1} flexGrow={2} style={{ width:'50%', height:'40px' }} >
+            <Box className="bxBrJ0" p={1} m={1} >
+                <Box p={1} flexGrow={2} className="bxBrJ1" >
                     <input type="text" placeholder="Pesquisar piada" className="brJSearch" style={{ backgroundColor:'#E9E4DA' }} />
                 </Box>
-                <Box p={1} flexGrow={2} display="flex" style={{ width:'50%', height:'40px', marginTop:'-8px' }} >
+                <Box p={1} flexGrow={2} display="flex" className="bxBrJ2" >
                     <Box p={1} flexGrow={2} style={{ width:'50%', height:'100%' }} >
                         <input type="text" placeholder="Ordenar" className="brJOrder" style={{ backgroundColor:'#E9E4DA' }} />
                     </Box>
@@ -62,25 +91,34 @@ const ListJokes = () => {
                     </Box>                        
                 </Box>
             </Box>
-            <List style={{ width:'900p', height:'500px', overflow:'auto' }} > 
+            <List className="listJ" > 
                 {jokes.map((item, index) =>(  
                     <React.Fragment>
                         <ListItem align="center">
-                            <Box display="block" m={1} className="cardJokes" onClick={()=>handleOpen(item.id, index + 1, item.description, item.uname, item.likes, item.dislike, item.created)}>
-                                <h2 style={{ marginTop:'-10px', color:'#cd1d2f' }}>Piada {index + 1}</h2>
-                                <Box className="txJoke" style={{ marginTop:'-20px' }} >
+                            <Box display="block" m={1} className="cardJokes" onClick={()=>handleOpen(item.id, index + 1, item.description, item.uname, item.likes, item.dislike, item.created, item.uemail)}>
+                                <Box className="bxLtJ0" p={1} m={1} >
+                                    <Box p={1} flexGrow={1} className="bxLtJ1">
+                                        <h2 style={{ marginTop:'-10px', color:'#cd1d2f' }}>Piada {index + 1}</h2>
+                                    </Box>
+                                    <Box p={1} flexGrow={1} className="bxLtJ2">
+                                        <span className="dtCJ">
+                                            {(item.created.slice(0,10).split('-').reverse().join()).replace(/,/g,'/')}
+                                        </span>
+                                    </Box>
+                                </Box>
+                                <Box className="bxJoke" >
                                     <p>
                                         {item.description}
                                     </p>
                                 </Box>
-                                <Box display="flex" p={1} m={1} style={{ width:'100%', height:'30px', marginTop:'30px' }}>
+                                <Box display="flex" p={1} m={1} style={{ width:'100%', height:'30px', marginTop:'20px' }}>
                                     <Box p={1} m={1} flexGrow={2} display="flex" style={{ width:'50%', marginTop:'-8px' }}>
-                                        <Box p={1} flexGrow={1} style={{ width:'50%' }}>
+                                        <Box p={1} flexGrow={1} className="bxLrJ1" >
                                             <span className="uJName">
                                                 {item.uname}
                                             </span>
                                         </Box>
-                                        <Box p={1} m={1} flexGrow={2} display="flex" style={{ width:'50%', marginTop:'-8px' }}>
+                                        <Box p={1} m={1} flexGrow={2} className="bxLrJ2" style={{ marginTop:'-8px' }} >
                                             <Box p={1} flexGrow={2} style={{ width:'50%' }}>
                                                 <input type="button" value={item.likes} className="lkJ" />
                                             </Box>
@@ -89,8 +127,8 @@ const ListJokes = () => {
                                             </Box>
                                         </Box>
                                     </Box>
-                                    <Box p={1} flexGrow={3} style={{ width:'50%' }} className="dtCJ">
-                                        <span>
+                                    <Box p={1} flexGrow={3} className="bxLrJ3" >
+                                        <span className="dtCJ">
                                             Publicada em {(item.created.slice(0,10).split('-').reverse().join()).replace(/,/g,'/')}
                                         </span>
                                     </Box>
@@ -101,21 +139,30 @@ const ListJokes = () => {
                 ))}
             </List>
             <Dialog open={open} onClose={()=>handleClose()} >
-                <DialogContentText className="dialogJ" style={{ padding:'30px', marginRight:'-50px' }}>
-                    <h2 style={{ marginTop:'-10px', color:'#cd1d2f' }}>Piada {title}</h2>
-                    <Box className="txJoke" style={{ width:'80%', marginTop:'-20px' }} >
+                <DialogContentText className="dialogJ" >
+                    <Box className="bxLtJ0" p={1} m={1} style={{ marginBottom:'20px' }} >
+                        <Box p={1} flexGrow={1} className="bxLtJ1">
+                            <h2 style={{ marginTop:'-10px', color:'#cd1d2f' }}>Piada {title}</h2>
+                        </Box>
+                        <Box p={1} flexGrow={1} className="bxLtJ2">
+                            <span className="dtCJ">
+                                {(date.slice(0,10).split('-').reverse().join()).replace(/,/g,'/')}
+                            </span>
+                        </Box>
+                    </Box>
+                    <Box className="dialogTJ" style={{ marginTop:'-20px' }} >
                         <p>
                             {description}
                         </p>
                     </Box>
-                    <Box display="flex" p={1} m={1} style={{ width:'80%', height:'30px', marginTop:'30px' }}>
+                    <Box display="flex" p={1} m={1} style={{ height:'30px', marginTop:'20px' }}>
                         <Box p={1} m={1} flexGrow={2} display="flex" style={{ width:'50%', marginTop:'-8px' }}>
                             <Box p={1} flexGrow={1} style={{ width:'50%' }}>
                                 <span className="uJName">
                                     {name}
                                 </span>
                             </Box>
-                            <Box p={1} m={1} flexGrow={2} display="flex" style={{ width:'50%', marginTop:'-8px' }}>
+                            <Box display="flex" p={1} m={1} flexGrow={2} style={{ width:'50%', marginTop:'-8px' }}>
                                 <Box p={1} flexGrow={2} style={{ width:'50%' }}>
                                     <input type="button" value={like} className="lkJ" />
                                 </Box>
@@ -124,12 +171,23 @@ const ListJokes = () => {
                                 </Box>
                             </Box>
                         </Box>
-                        <Box p={1} flexGrow={3} style={{ width:'50%' }} className="dtCJ">
-                            <span>
+                        <Box p={1} flexGrow={3} className="bxLrJ3" >
+                            <span className="dtCJ">
                                 Publicada em {(date.slice(0,10).split('-').reverse().join()).replace(/,/g,'/')}
                             </span>
                         </Box>
                     </Box>
+                    <hr className="line"/>
+                    <div align="center">
+                        <Box display="flex" p={1} m={1} flexGrow={2} className="dialogOp" >
+                            <Box p={1} flexGrow={2} style={{ width:'50%' }}>
+                                <input type="button" value="Chorei" className="dialoglkJ" style={{ backgroundColor:'#1DCC4D'}} onClick={()=>handleAlterLike()} />
+                            </Box>
+                            <Box p={1} flexGrow={2} style={{ width:'50%' }}>
+                                <input type="button" value="Nem ri" className="dialogdkJ" style={{ backgroundColor:'#C8051B' }} onClick={()=>handleAlterDisLike()} />
+                            </Box>
+                        </Box>
+                    </div>
                 </DialogContentText>
             </Dialog>
         </div>
