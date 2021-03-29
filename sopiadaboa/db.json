@@ -6,7 +6,7 @@
         "name": "Marcelo Azevedo",
         "email": "marcelo@triider.com"
       },
-      "likes": 51,
+      "likes": 54,
       "dislike": 1,
       "created": "2020-12-08T11:21:00Z",
       "id": 1
@@ -19,7 +19,7 @@
         "email": "fabio@triider.com"
       },
       "likes": 36,
-      "dislike": 5,
+      "dislike": 7,
       "created": "2021-01-08T11:21:00Z"
     },
     {
@@ -29,7 +29,7 @@
         "email": "gregory@triider.com"
       },
       "likes": 29,
-      "dislike": 0,
+      "dislike": 1,
       "created": "2021-02-18T11:21:00Z",
       "id": 3
     },
@@ -43,6 +43,39 @@
       "dislike": 10,
       "created": "2021-03-27T11:21:00Z",
       "id": 4
+    },
+    {
+      "user": {
+        "name": "Talita Sanchez",
+        "email": "talita.b.sanchez@gmail.com"
+      },
+      "description": "Por que a namorada pediu ao namorado um tempo e um espaço?\n\nPorque ela queria calcular a velocidade.",
+      "created": "2021-03-28T00:39:39.460Z",
+      "likes": 0,
+      "dislike": 0,
+      "id": 5
+    },
+    {
+      "user": {
+        "name": "Talita Sanchez",
+        "email": "talita.b.sanchez@gmail.com"
+      },
+      "description": "Duas impressoras conversando, quando uma delas vira para a outra e fala:\nEssa folha no chão é sua ou é impressão minha?",
+      "created": "2021-03-28T00:41:57.188Z",
+      "likes": 1,
+      "dislike": 1,
+      "id": 6
+    },
+    {
+      "user": {
+        "name": "Talita Sanchez",
+        "email": "talita.b.sanchez@gmail.com"
+      },
+      "description": "- Qual é a maior diferença entre hardware e software?\n\n- Na raiva, a gente chuta o hardware e xinga o software!",
+      "created": "28/03/2021 21:50:38",
+      "likes": 0,
+      "dislike": 0,
+      "id": 7
     }
   ]
 }

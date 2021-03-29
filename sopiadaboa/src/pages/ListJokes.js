@@ -1,8 +1,10 @@
+//#region Dependências
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { List, ListItem, Box, Dialog, DialogContentText } from '@material-ui/core';
-
+//#endregion
 const ListJokes = () => {
+    //#region Variveis de Estado e Array
     const [jokes, setJokes] = useState([]);
     const [open, setOpen] = useState(false);
     const [id, setId] = useState("");
@@ -12,15 +14,16 @@ const ListJokes = () => {
     const [like, setLike] = useState(0);
     const [dlike, setDlike] = useState(0);
     const [date,  setDate] = useState("");
-    const [email,  setEmail] = useState("");
-
-    const ArrJokes = (arr) =>
-        arr.map((item) => ({ id: item.id, description: item.description, 
-                             uname: item.user.name, uemail: item.user.email, 
-                             likes: item.likes, dislike: item.dislike, 
-                             created: item.created }));
     
-    const handleOpen = (id, tit, desc, nam, lik, dis, dt, email) => {
+    const ArrJokes = (arr) =>
+        arr.map((item) => ({ 
+            id: item.id, description: item.description, 
+            uname: item.user.name, likes: item.likes, 
+            dislike: item.dislike, created: item.created 
+        }));
+    //#endregion
+    //#region Componentes de Função e Efeito
+    const handleOpen = (id, tit, desc, nam, lik, dis, dt) => {
         setOpen(true);
         setId(id);
         setTitle(tit);
@@ -29,10 +32,12 @@ const ListJokes = () => {
         setLike(lik);
         setDlike(dis);
         setDate(dt);
-        setEmail(email);
     };
     const handleClose = () => {
         setOpen(false);
+    };
+    const handleClick = () =>{
+        window.location = '/novapiada';
     };
 
     const handleLoad = () =>{
@@ -75,7 +80,7 @@ const ListJokes = () => {
         handleLoad();
         // eslint-disable-next-line
     },[]);
-
+    //#endregion
     return(           
         <div align="center" className="rtLJokes">
             <Box className="bxBrJ0" p={1} m={1} >
@@ -87,7 +92,7 @@ const ListJokes = () => {
                         <input type="text" placeholder="Ordenar" className="brJOrder" style={{ backgroundColor:'#E9E4DA' }} />
                     </Box>
                     <Box p={1} flexGrow={2} style={{ width:'50%', height:'100%' }}>
-                        <input type="button" value="Criar piada" className="brJBtCreate" style={{ color:'#FFFFFF' }} />
+                        <input type="button" value="Criar piada" className="brJBtCreate" style={{ color:'#FFFFFF' }} onClick={()=>handleClick()} />
                     </Box>                        
                 </Box>
             </Box>
@@ -95,7 +100,7 @@ const ListJokes = () => {
                 {jokes.map((item, index) =>(  
                     <React.Fragment>
                         <ListItem align="center">
-                            <Box display="block" m={1} className="cardJokes" onClick={()=>handleOpen(item.id, index + 1, item.description, item.uname, item.likes, item.dislike, item.created, item.uemail)}>
+                            <Box display="block" m={1} className="cardJokes" onClick={()=>handleOpen(item.id, index + 1, item.description, item.uname, item.likes, item.dislike, item.created)}>
                                 <Box className="bxLtJ0" p={1} m={1} >
                                     <Box p={1} flexGrow={1} className="bxLtJ1">
                                         <h2 style={{ marginTop:'-10px', color:'#cd1d2f' }}>Piada {index + 1}</h2>
@@ -171,7 +176,7 @@ const ListJokes = () => {
                                 </Box>
                             </Box>
                         </Box>
-                        <Box p={1} flexGrow={3} className="bxLrJ3" >
+                        <Box p={1} flexGrow={3} className="bxLrJ3" style={{ marginRight:'-20px' }}>
                             <span className="dtCJ">
                                 Publicada em {(date.slice(0,10).split('-').reverse().join()).replace(/,/g,'/')}
                             </span>
